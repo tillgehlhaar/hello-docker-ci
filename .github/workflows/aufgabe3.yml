@@ -224,7 +224,7 @@ jobs:
           # Use provided IMAGE_URI or get ECR password to construct it
           if [ -z "$IMAGE_URI" ]; then
             echo "Warning: IMAGE_URI is empty, getting from ECR..."
-            ECR_REGISTRY=$(aws ecr describe-repositories --repository-names hello-world --query 'repositories[0].repositoryUri' --output text | cut -d'/' -f1)
+            ECR_REGISTRY=$(aws ecr describe-repositories --repository-names hello-docker-repo --query 'repositories[0].repositoryUri' --output text | cut -d'/' -f1)
             IMAGE_URI="$ECR_REGISTRY/hello-world:latest"
           fi
           
